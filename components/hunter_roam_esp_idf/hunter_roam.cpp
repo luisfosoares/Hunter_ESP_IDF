@@ -47,9 +47,11 @@ void HunterRoam::sendHigh() {
 void HunterRoam::writeBus(std::vector<uint8_t> buffer, bool extrabit) {
   // Reset pulse
   this->pin_->digital_write(true);
-  vTaskDelay(pdMS_TO_TICKS(325));
+  //vTaskDelay(pdMS_TO_TICKS(325));
+  esp_rom_delay_us(325000);   // 325 ms
   this->pin_->digital_write(false);
-  vTaskDelay(pdMS_TO_TICKS(65));
+  //vTaskDelay(pdMS_TO_TICKS(65));
+  esp_rom_delay_us(65000);    // 65 ms
 
   // Start pulse
   this->pin_->digital_write(true);
