@@ -17,7 +17,9 @@ static const int START_INTERVAL = 2000;
 
 void HunterRoam::set_pin(GPIOPin *pin) {
   this->pin_ = pin;
-  this->pin_->setup();
+  //this->pin_->setup();
+  this->pin_->pin_mode(gpio::FLAG_OUTPUT);
+
 }
 
 std::string HunterRoam::errorHint(uint8_t error) {
