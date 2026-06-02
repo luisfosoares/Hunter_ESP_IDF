@@ -19,4 +19,4 @@ async def to_code(config):
     cg.add(var.set_pin(pin))
 
     await cg.register_component(var, config)
-``
+
