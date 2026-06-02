@@ -47,6 +47,7 @@ void HunterRoam::sendHigh() {
 }
 
 void HunterRoam::writeBus(std::vector<uint8_t> buffer, bool extrabit) {
+  taskENTER_CRITICAL();  // <--- ADD THIS
   // Reset pulse
   this->pin_->digital_write(true);
   //vTaskDelay(pdMS_TO_TICKS(325));
@@ -74,6 +75,7 @@ void HunterRoam::writeBus(std::vector<uint8_t> buffer, bool extrabit) {
   }
 
   sendLow();  // Stop pulse
+  taskEXIT_CRITICAL();  // <--- AND THIS
 }
 
 void HunterRoam::hunterBitfield(std::vector<uint8_t> &bits, uint8_t pos, uint8_t val, uint8_t len) {
